@@ -127,7 +127,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/buku/update/12?username=new gege&address=new cepo",
+					"raw": "http://127.0.0.1:8000/api/buku/update/2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -140,17 +140,7 @@
 						"api",
 						"buku",
 						"update",
-						"12"
-					],
-					"query": [
-						{
-							"key": "username",
-							"value": "new gege"
-						},
-						{
-							"key": "address",
-							"value": "new cepo"
-						}
+						"2"
 					]
 				}
 			},
