@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/mahasiswa",
+					"raw": "http://127.0.0.1:8000/api/buku",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -23,7 +23,7 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"mahasiswa"
+						"buku"
 					]
 				}
 			},
@@ -32,8 +32,42 @@
 		{
 			"name": "STORE DATA",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/buku/store?kode_buku=BK002&jenis_buku=Tamu&nama_buku=Ayu&penerbit=Diah",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"buku",
+						"store"
+					],
+					"query": [
+						{
+							"key": "kode_buku",
+							"value": "BK002"
+						},
+						{
+							"key": "jenis_buku",
+							"value": "Tamu"
+						},
+						{
+							"key": "nama_buku",
+							"value": "Ayu"
+						},
+						{
+							"key": "penerbit",
+							"value": "Diah"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -41,15 +75,84 @@
 			"name": "SHOW DATA BY ID",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/buku/show/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"buku",
+						"show",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UPDATE DATA",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "kode_buku",
+							"value": "new gege",
+							"type": "text"
+						},
+						{
+							"key": "jenis_buku",
+							"value": "new rere",
+							"type": "text"
+						},
+						{
+							"key": "nama_buku",
+							"value": "nwe qq",
+							"type": "text"
+						},
+						{
+							"key": "penerbit",
+							"value": "new yuy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/buku/update/12?username=new gege&address=new cepo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"buku",
+						"update",
+						"12"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "new gege"
+						},
+						{
+							"key": "address",
+							"value": "new cepo"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -57,7 +160,24 @@
 			"name": "DELETE DATA",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/buku/destroy/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"buku",
+						"destroy",
+						"1"
+					]
+				}
 			},
 			"response": []
 		}
