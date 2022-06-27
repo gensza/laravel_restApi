@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\BukuController;
+use App\Http\Controllers\API\ContentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,8 @@ Route::get('buku/destroy/{id}', [BukuController::class, 'destroy']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('content', [ContentController::class, 'index']);
+// Route::get('/', function () {
+//     return view('content');
+// });
