@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <title>Hello, world!</title>
 </head>
@@ -45,16 +46,7 @@
 
     <div class="container">
         <div class="row">
-            <img src="{{asset('storage/images/mawar.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/red bg.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/Rectangle 118.png')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/scdry.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/pinky.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/oren.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/iceblue.png')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/brown.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/navy.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/meyah.png')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
+            <div id="produk"></div>
         </div><br>
     </div>
     <marquee behavior="" direction="">
@@ -87,16 +79,7 @@
 
     <div class="container">
         <div class="row">
-            <img src="{{asset('storage/images/windiw.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/pren.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/selfie.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/pinkgil.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/record.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/kumpul.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/write.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/brgr.png')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/pinkgil.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
-            <img src="{{asset('storage/images/mawar.jpg')}}" class="img-thumbnail" style="width: 375px; height: 210px;" alt="...">
+            <div id="service"></div>
         </div><br>
     </div>
     <div class="container">
@@ -184,6 +167,8 @@
 
 
     <!-- Optional JavaScript; choose one of the two! -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -196,3 +181,36 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+        console.log("ready!");
+
+        $.ajax({
+            type: "GET",
+            url: "/produk/data_ajax",
+            dataType: "JSON",
+
+            beforeSend: function() {},
+
+            data: {},
+
+            success: function(data) {
+                for (var i = 0; i < data.produk.length; i++) {
+                    var html =
+                        '<img src="{{asset("storage/images")}}/' + data.produk[i].poster + '" class="img-thumbnail" style="width: 370px; height: 210px;">'
+                    $("#produk").append(html);
+                }
+
+                for (var i = 0; i < data.service.length; i++) {
+                    var html =
+                        '<img src="{{asset("storage/images")}}/' + data.service[i].poster + '" class="img-thumbnail" style="width: 370px; height: 210px;">'
+                    $("#service").append(html);
+                }
+            },
+            error: function(response) {
+                alert('ERROR! ' + response.responseText);
+            }
+        });
+    });
+</script>

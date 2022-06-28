@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ContentController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('content');
 // });
 
-Route::get('/', [ContentController::class, 'index']);
+Route::get('/content', [ContentController::class, 'index']);
+Route::get('/', [ProdukController::class, 'index']);
+Route::get('/produk/data_ajax', [ProdukController::class, 'data_ajax']);

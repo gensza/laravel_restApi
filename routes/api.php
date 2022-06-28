@@ -22,9 +22,9 @@ Route::get('buku/show/{id}', [BukuController::class, 'show']);
 Route::post('buku/update/{id}', [BukuController::class, 'update']);
 Route::get('buku/destroy/{id}', [BukuController::class, 'destroy']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('content', [ContentController::class, 'index']);
 // Route::get('/', function () {

@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Helpers\ApiFormatter;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Service;
-use Exception;
-use Illuminate\Http\Request;
 
-class ContentController extends Controller
+use GuzzleHttp\Client;
+
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,22 +20,15 @@ class ContentController extends Controller
         $data['produk'] = Produk::all();
         $data['service'] = Service::all();
 
-        if ($data) {
-            return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Data Not Found');
-        }
+        return view('content', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
+    public function data_ajax()
     {
-        return view('content');
+        $data['produk'] = Produk::all();
+        $data['service'] = Service::all();
+
+        return json_encode($data);
     }
 
     /**
@@ -57,6 +49,18 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
