@@ -18,6 +18,7 @@ class ContentController extends Controller
      */
     public function index()
     {
+        // tets
         $data['produk'] = Produk::all();
         $data['service'] = Service::all();
 
